@@ -1,0 +1,89 @@
+from gpiozero import AngularServo
+from time import sleep
+from gpiozero import DistanceSensor, LED, Buzzer
+from signal import pause
+import random #all my imports to make the code use
+
+servo = AngularServo(18, min_angle=-90, max_angle=90, min_pulse_width=0.00061, max_pulse_width=0.0026)
+sensor = DistanceSensor(echo=17, trigger=4) #no clue
+led = LED(12)
+buzzer = Buzzer(6) #what pins i needed to turn on and off led and  buzzer
+while True:
+    if sensor.distance < 1:
+        led.on()
+        buzzer.on() # checks if anything is within 1 meter
+    else:
+        led.off()
+        buzzer.off()
+        servo.angle = 0
+        sleep(0.25) #moves
+    if sensor.distance < 1:
+        led.on()
+        buzzer.on() #checks
+    else:
+        led.off()
+        buzzer.off()
+        print("boi") # moves (different)
+        servo.angle = -45
+        sleep(0.25)
+    if sensor.distance < 1:
+        led.on()
+        buzzer.on() #checks
+    else:                                                                    
+        led.off()
+        buzzer.off() #moves again
+        print("boi")
+        servo.angle = -90
+        sleep(0.25)
+    if sensor.distance < 1:
+        led.on()
+        buzzer.on() #checks
+    else:
+        led.off()
+        buzzer.off() #moves back
+        print("boi")
+        servo.angle = -45
+        sleep(0.25)
+    if sensor.distance < 1:
+        led.on()
+        buzzer.on()
+    else:
+        led.off() #back again
+        buzzer.off()
+        print("omega boi")
+        servo.angle = 0
+        sleep(0.25)
+    if sensor.distance < 1:
+        led.on()
+        buzzer.on()
+    else:
+        led.off()
+        buzzer.off() #new direction
+        print("boi")
+        servo.angle = 45
+        sleep(0.25)
+    if sensor.distance < 1:
+        led.on()
+        buzzer.on()
+    else:
+        led.off()
+        buzzer.off() #new turnign
+        print("very super omega boi")
+        servo.angle = 90
+        sleep(0.25)
+    if sensor.distance < 1:
+        led.on()
+        buzzer.on()
+    else:
+        led.off()
+        buzzer.off()
+        print (sensor.distance) # no idea
+    if sensor.distance < 1:
+        led.on() # checks
+        buzzer.on()
+    else:
+        led.off()
+        buzzer.off()
+        print("boi")
+        servo.angle = 45
+        sleep(0.25) #moves back again
